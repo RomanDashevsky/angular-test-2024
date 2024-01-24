@@ -1,5 +1,6 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { NotFoundPageComponent } from './core/not-found-page/not-found-page.component';
+import { NgModule } from '@angular/core';
 
 export enum AppRoutes {
   DataList = 'data-list',
@@ -25,3 +26,9 @@ export const routes: Routes = [
     component: NotFoundPageComponent,
   },
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
