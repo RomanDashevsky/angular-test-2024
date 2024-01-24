@@ -4,6 +4,12 @@
 
 export const environment = {
   production: false,
+  aboutMeData: {
+    fullName: 'Roman Dashevsky',
+    email: 'dummy-mock-email@gmail.com',
+    telegram: '@dummy-mock-telegram',
+    gitHubUrl: 'https://github.com/RomanDashevsky',
+  },
 };
 
 /*

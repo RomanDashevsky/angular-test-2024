@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
-import { MaterialUiModule } from '../../material-ui/material-ui.module';
+import { MaterialUiModule } from '../../../shared/material-ui/material-ui.module';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;

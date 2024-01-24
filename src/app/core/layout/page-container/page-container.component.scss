@@ -1,5 +1,5 @@
-.page-container {
-  padding-top: 32px;
+:host {
   margin: 0 auto;
-  width: calc(100vw - 96px);
+  width: 100%;
+  position: relative;
 }

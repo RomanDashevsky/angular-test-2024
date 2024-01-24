@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { LayoutModule } from './layout/layout.module';
 import { NotFoundPageModule } from './not-found-page/not-found-page.module';
-import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from '../shared/shared.module';
 
-const modules = [CommonModule, BrowserAnimationsModule, LayoutModule, NotFoundPageModule];
+const modules = [SharedModule, LayoutModule, NotFoundPageModule];
 
 @NgModule({
   imports: [...modules],

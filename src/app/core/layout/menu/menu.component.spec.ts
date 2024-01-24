@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MenuComponent } from './menu.component';
-import { MaterialUiModule } from '../../material-ui/material-ui.module';
+import { MaterialUiModule } from '../../../shared/material-ui/material-ui.module';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { of } from 'rxjs';
 

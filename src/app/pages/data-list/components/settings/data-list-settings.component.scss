@@ -1,0 +1,10 @@
+.settings-form > * {
+  width: calc(33% - 32px);
+  margin: 16px;
+}
+
+// just simple example of responsive custom handling
+.settings-form.mobile > * {
+  width: calc(100%);
+  margin: 0;
+}

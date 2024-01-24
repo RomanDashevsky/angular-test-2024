@@ -1,1 +1,35 @@
-<p>about-me works!</p>
+<div class="centered-card">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>About me:</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <mat-icon matListItemIcon>person</mat-icon>
+          <h3 matListItemTitle>Full Name</h3>
+          <h3 matListItemLine>{{ aboutMeData.fullName }}</h3>
+        </mat-list-item>
+
+        <mat-list-item>
+          <mat-icon matListItemIcon>email</mat-icon>
+          <h3 matListItemTitle>Email</h3>
+          <p matListItemLine>{{ aboutMeData.email }}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <mat-icon matListItemIcon>telegram</mat-icon>
+          <h3 matListItemTitle>Telegram account</h3>
+          <p matListItemLine>{{ aboutMeData.telegram }}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <mat-icon matListItemIcon>code</mat-icon>
+          <h3 matListItemTitle>GitHub account</h3>
+          <a matListItemLine [href]="aboutMeData.gitHubUrl" target="_blank">{{ aboutMeData.gitHubUrl }}</a>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
