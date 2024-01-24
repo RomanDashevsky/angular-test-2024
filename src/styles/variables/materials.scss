@@ -1,0 +1,7 @@
+@import "@angular/material/core/theming/palette";
+
+html {
+  --color-primary: $indigo-palette(400);
+  --color-secondary: $pink-palette(400);
+}
+

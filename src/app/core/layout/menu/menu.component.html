@@ -1,0 +1,15 @@
+<button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseover)="menuTrigger.openMenu()">
+  <mat-icon>menu</mat-icon>
+</button>
+<mat-menu #menu="matMenu" [overlapTrigger]="false">
+  <span (mouseleave)="menuTrigger.closeMenu()">
+    <a mat-menu-item [routerLink]="links.DataList" routerLinkActive="active">
+      <mat-icon>view_list</mat-icon>
+      <span>Data list</span>
+    </a>
+    <a mat-menu-item [routerLink]="links.AboutMe" routerLinkActive="active">
+      <mat-icon>contact_support</mat-icon>
+      <span>About me</span>
+    </a>
+  </span>
+</mat-menu>
