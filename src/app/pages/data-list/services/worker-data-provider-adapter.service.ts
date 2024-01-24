@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { DataProviderWorkerMessageResponse } from '../types';
+import { createWorker } from '../utils/create-worker';
 
 @Injectable()
-export class WorkerDataProviderService {
+export class WorkerDataProviderAdapter {
   private worker: Worker;
   private dataSubject$ = new Subject<DataProviderWorkerMessageResponse>();
   private messageHandler;
   constructor() {
     this.messageHandler = ({ data }: MessageEvent<DataProviderWorkerMessageResponse>) => {
-      console.log('Hello from worker service');
-      console.log(data);
       this.dataSubject$.next(data);
     };
 
-    console.log('worker construct');
-    this.worker = new Worker(new URL('../workers/data-provider.worker.ts', import.meta.url));
+    this.worker = createWorker();
     this.worker.addEventListener('message', this.messageHandler);
   }
 

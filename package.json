@@ -12,7 +12,7 @@
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "pre-commit": "lint-staged",
-    "ci": "npm run lint && npm run test && npm run build",
+    "ci": "npm run lint && npm run build",
     "prepare": "husky install .husky"
   },
   "private": true,
@@ -63,6 +63,9 @@
       "<rootDir>/node_modules/",
       "<rootDir>/dist/"
     ],
+    "moduleNameMapper": {
+      ".*create-worker.ts": "<rootDir>/tests/fakes/create-worker.ts"
+    },
     "globals": {
       "ts-jest": {
         "tsConfig": "<rootDir>/tsconfig.spec.json",

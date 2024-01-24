@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, filter, map, Observable, Subject, switchMap, takeUntil, tap, timer } from 'rxjs';
 import { DataItemDto } from '../types';
-import { WorkerDataProviderService } from './worker-data-provider.service';
+import { WorkerDataProviderAdapter } from './worker-data-provider-adapter.service';
 
 @Injectable()
 export class DataFetchService {
@@ -11,7 +11,7 @@ export class DataFetchService {
   private currentTickId$ = new BehaviorSubject<number>(0);
   private destroy$ = new Subject<void>();
 
-  constructor(private readonly providerService: WorkerDataProviderService) {}
+  constructor(private readonly providerService: WorkerDataProviderAdapter) {}
 
   destroy() {
     this.destroy$.next();
@@ -28,10 +28,6 @@ export class DataFetchService {
       takeUntil(this.destroy$),
       switchMap((tickId) => {
         this.currentTickId = tickId;
-
-        console.log('tickId');
-        console.log(tickId);
-
         this.isLoading = true;
 
         return this.providerService.getData(size, current, tickId).pipe(
