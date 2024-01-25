@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DataFetchSettingsService } from '../../services/data-fetch-settings.service';
 import { Subject, takeUntil } from 'rxjs';
@@ -8,6 +8,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   selector: 'app-data-settings',
   templateUrl: './data-settings.component.html',
   styleUrls: ['./data-settings.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DataSettingsComponent {
   destroy$ = new Subject<void>();
@@ -43,7 +44,13 @@ export class DataSettingsComponent {
     this.form
       .get('additionalIds')
       ?.valueChanges.pipe(takeUntil(this.destroy$))
-      .subscribe((data) => (this.settingsService.additionalIds = data.split(',')));
+      .subscribe(
+        (data) =>
+          (this.settingsService.additionalIds = data
+            .split(',')
+            .map((item: string) => item.trim())
+            .filter((item: string) => !!item))
+      );
   }
 
   private observeScreenSize(): void {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { DataStoreService } from '../../services/data-store.service';
 import { trackById } from '../../utils/tackBy';
 
@@ -6,6 +6,7 @@ import { trackById } from '../../utils/tackBy';
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DataTableComponent implements OnInit, OnDestroy {
   trackById = trackById;

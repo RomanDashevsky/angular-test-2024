@@ -5,9 +5,10 @@ import { DataSettingsComponent } from './components/settings/data-settings.compo
 import { DataTablePageComponent } from './components/page/data-table-page.component';
 import { SharedModule } from '../../shared/shared.module';
 import { MaskIdPipe } from './pipes/mask-id.pipe';
+import { DataTableChildComponent } from './components/data-table-child/data-table-child.component';
 
 @NgModule({
-  declarations: [DataTableComponent, DataSettingsComponent, DataTablePageComponent, MaskIdPipe],
+  declarations: [DataTableComponent, DataSettingsComponent, DataTablePageComponent, MaskIdPipe, DataTableChildComponent],
   imports: [DataListRoutingModule, SharedModule],
   exports: [DataTableComponent],
 })
