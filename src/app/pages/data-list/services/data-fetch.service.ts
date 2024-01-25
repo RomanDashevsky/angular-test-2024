@@ -15,6 +15,7 @@ export class DataFetchService {
 
   destroy() {
     this.destroy$.next();
+    this.destroy$.complete();
     this.providerService.destroy();
   }
 
