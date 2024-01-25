@@ -12,7 +12,7 @@ const generateRandomInteger = (): number => {
 };
 
 const generateRandomFloat = (): number => {
-  return parseFloat((Math.random() * 100).toFixed(18));
+  return parseFloat(Math.random().toFixed(18));
 };
 
 export const generateDataArray = (size: number = DEFAULT_DATA_LIST_SIZE): DataItemDto[] => {

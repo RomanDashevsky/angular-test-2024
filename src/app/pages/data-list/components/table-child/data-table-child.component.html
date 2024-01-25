@@ -1,11 +1,20 @@
 <table *ngIf="item?.id" mat-table [dataSource]="[item]">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> ID </th>
-    <td mat-cell *matCellDef="let element"> {{element | maskId}} </td>
+    <td
+      mat-cell
+      class="mat-column-id"
+      *matCellDef="let element"
+    > {{element | maskId}} </td>
   </ng-container>
   <ng-container matColumnDef="color">
     <th mat-header-cell *matHeaderCellDef> Color </th>
-    <td mat-cell *matCellDef="let element"> {{element.color}} </td>
+    <td
+      mat-cell
+      class="mat-column-color"
+      *matCellDef="let element"
+      [innerHTML]="element.color | bgColor | safe: 'html'"
+    ></td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedChildColumns"></tr>
