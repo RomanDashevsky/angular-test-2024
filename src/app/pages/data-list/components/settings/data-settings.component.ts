@@ -6,13 +6,13 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-data-settings',
-  templateUrl: './data-list-settings.component.html',
-  styleUrls: ['./data-list-settings.component.scss'],
+  templateUrl: './data-settings.component.html',
+  styleUrls: ['./data-settings.component.scss'],
 })
-export class DataListSettingsComponent {
+export class DataSettingsComponent {
   destroy$ = new Subject<void>();
   form: FormGroup;
-  gridCols = 3;
+  isMobile = false;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -48,14 +48,10 @@ export class DataListSettingsComponent {
 
   private observeScreenSize(): void {
     this.breakpointObserver
-      .observe([Breakpoints.Handset, Breakpoints.Tablet])
+      .observe([Breakpoints.XSmall])
       .pipe(takeUntil(this.destroy$))
       .subscribe((result) => {
-        if (result.matches) {
-          this.gridCols = 1;
-        } else {
-          this.gridCols = 3;
-        }
+        this.isMobile = result.matches;
       });
   }
 }

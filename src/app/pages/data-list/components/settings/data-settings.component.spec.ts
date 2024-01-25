@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DataListSettingsComponent } from './data-list-settings.component';
+import { DataSettingsComponent } from './data-settings.component';
 import { DataFetchSettingsServiceStub } from '../../../../../../tests/stubs/data-fetch-settings-service.stub';
 import { DataFetchSettingsService } from '../../services/data-fetch-settings.service';
 import { SharedModule } from '../../../../shared/shared.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('DataListSettingsComponent', () => {
-  let component: DataListSettingsComponent;
-  let fixture: ComponentFixture<DataListSettingsComponent>;
+describe('DataSettingsComponent', () => {
+  let component: DataSettingsComponent;
+  let fixture: ComponentFixture<DataSettingsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SharedModule, NoopAnimationsModule],
-      declarations: [DataListSettingsComponent],
+      declarations: [DataSettingsComponent],
       providers: [
         {
           provide: DataFetchSettingsService,
@@ -22,7 +22,7 @@ describe('DataListSettingsComponent', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DataListSettingsComponent);
+    fixture = TestBed.createComponent(DataSettingsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

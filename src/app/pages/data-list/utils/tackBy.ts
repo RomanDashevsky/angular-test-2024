@@ -1,3 +1,5 @@
-export const trackById = (index: number, item: { id: string | number }) => {
+import { DataTableItem } from '../models/data-table-item';
+
+export const trackById = (index: number, item: DataTableItem) => {
   return item.id;
 };

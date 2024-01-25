@@ -1,0 +1,20 @@
+<div>
+  <form
+    class="settings-form"
+    [formGroup]="form"
+    [class.mobile]="isMobile"
+  >
+    <mat-form-field size="small">
+      <mat-label>Timer, ms</mat-label>
+      <input matInput formControlName="reaperTime">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Array size</mat-label>
+      <input matInput formControlName="listSize">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Additional array ids</mat-label>
+      <input matInput formControlName="additionalIds" placeholder="IDs should be separated by comma">
+    </mat-form-field>
+  </form>
+</div>

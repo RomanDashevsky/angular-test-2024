@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatestWith, debounceTime, map, Observable, Subject, switchMap, takeUntil } from 'rxjs';
-import { DataItem } from '../types';
+import { BehaviorSubject, combineLatestWith, debounceTime, map, Observable, Subject, switchMap, takeUntil, tap } from 'rxjs';
+import { DataItemDto } from '../types';
 import { DataFetchSettingsService } from './data-fetch-settings.service';
 import { DataFetchService } from './data-fetch.service';
 import { RENDER_DATA_LIST_SIZE } from '../constants';
 import { DataSource } from '@angular/cdk/collections';
+import { DataTableItem } from '../models/data-table-item';
 
 @Injectable()
-export class DataStoreService extends DataSource<DataItem> {
-  data$ = new BehaviorSubject<DataItem[]>([]);
+export class DataStoreService extends DataSource<DataTableItem> {
+  data$ = new BehaviorSubject<DataTableItem[]>([]);
   isLoading$ = this.fetchService.isLoading$.pipe(debounceTime(100));
 
   private destroy$ = new Subject<void>();
@@ -16,8 +17,13 @@ export class DataStoreService extends DataSource<DataItem> {
     super();
   }
 
-  connect(): Observable<DataItem[]> {
-    return this.data$.asObservable();
+  connect(): Observable<DataTableItem[]> {
+    return this.data$.asObservable().pipe(
+      tap((data) => {
+        console.log('connect');
+        console.log(data);
+      })
+    );
   }
 
   disconnect(): void {
@@ -34,10 +40,17 @@ export class DataStoreService extends DataSource<DataItem> {
           const sliceSize = RENDER_DATA_LIST_SIZE >= data.length ? RENDER_DATA_LIST_SIZE : data.length;
 
           return data.slice(-sliceSize);
+        }),
+        map((data) => {
+          return data.map((item, index) => this.transformRawDataToTableModel(item, index));
         })
       )
       .subscribe({
-        next: (data) => this.data$.next(data),
+        next: (data) => {
+          console.log('next');
+          console.log(data);
+          this.data$.next(data);
+        },
         error: (error) => {
           // TODO: add error handle case
           console.error(error);
@@ -49,5 +62,14 @@ export class DataStoreService extends DataSource<DataItem> {
   destroy() {
     this.destroy$.next();
     this.fetchService.destroy();
+  }
+
+  private transformRawDataToTableModel(item: DataItemDto, index: number): DataTableItem {
+    const additionalIds = this.settingsService.additionalIds;
+    const itemModel = new DataTableItem(item);
+
+    itemModel.maskId = index < additionalIds.length ? additionalIds[index] : undefined;
+
+    return itemModel;
   }
 }

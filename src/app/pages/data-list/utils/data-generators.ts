@@ -1,7 +1,7 @@
 // TODO: use uuid generator to avoid duplication of IDs
-import { DataItem } from '../types';
 import randomColor from 'randomcolor';
 import { DEFAULT_DATA_LIST_SIZE } from '../constants';
+import { DataItemDto } from '../types';
 
 const generateRandomId = (): string => {
   return Math.random().toString(36).substring(7);
@@ -15,11 +15,11 @@ const generateRandomFloat = (): number => {
   return parseFloat((Math.random() * 100).toFixed(18));
 };
 
-export const generateDataArray = (size: number = DEFAULT_DATA_LIST_SIZE): DataItem[] => {
-  const dataArray: DataItem[] = [];
+export const generateDataArray = (size: number = DEFAULT_DATA_LIST_SIZE): DataItemDto[] => {
+  const dataArray: DataItemDto[] = [];
 
   for (let i = 0; i < size; i++) {
-    const dataItem: DataItem = {
+    const dataItem: DataItemDto = {
       id: generateRandomId(),
       int: generateRandomInteger(),
       float: generateRandomFloat(),

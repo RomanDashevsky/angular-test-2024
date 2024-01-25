@@ -21,9 +21,3 @@ export interface DataItemDto extends BaseDataItem {
   float: number;
   child: BaseDataItem;
 }
-
-export interface DataItem extends BaseDataItem {
-  int: number;
-  float: number;
-  child: BaseDataItem;
-}

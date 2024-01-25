@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DataListPageComponent } from './data-list-page.component';
+import { DataTablePageComponent } from './data-table-page.component';
 
-describe('DataListPageComponent', () => {
-  let component: DataListPageComponent;
-  let fixture: ComponentFixture<DataListPageComponent>;
+describe('DataTablePageComponent', () => {
+  let component: DataTablePageComponent;
+  let fixture: ComponentFixture<DataTablePageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DataListPageComponent],
+      declarations: [DataTablePageComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DataListPageComponent);
+    fixture = TestBed.createComponent(DataTablePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

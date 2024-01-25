@@ -12,13 +12,13 @@ describe('DataFetchSettingsService', () => {
     service = TestBed.inject(DataFetchSettingsService);
   });
 
-  it('should have default list size, reaper time, and additional ids', () => {
+  it('should have default table size, reaper time, and additional ids', () => {
     expect(service.listSize).toEqual(DEFAULT_DATA_LIST_SIZE);
     expect(service.reaperTime).toEqual(DEFAULT_FETCH_REPEAT_TIMER);
     expect(service.additionalIds).toEqual([]);
   });
 
-  it('should set and get list size', () => {
+  it('should set and get table size', () => {
     const newListSize = 20;
 
     service.listSize = newListSize;
@@ -45,7 +45,7 @@ describe('DataFetchSettingsService', () => {
     expect(service.additionalIds$.getValue()).toEqual(newAdditionalIds);
   });
 
-  it('should emit changes in list size', (done) => {
+  it('should emit changes in table size', (done) => {
     const newListSize = 30;
 
     service.listSize$.pipe(skip(1), take(1)).subscribe((value) => {
