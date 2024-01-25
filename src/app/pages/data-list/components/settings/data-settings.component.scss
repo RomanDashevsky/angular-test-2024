@@ -1,6 +1,11 @@
+
 .settings-form > * {
-  width: calc(33% - 32px);
+  width: calc(25% - 32px);
   margin: 16px;
+
+  &:last-child {
+    width: calc(50% - 32px);
+  }
 }
 
 // just simple example of responsive custom handling

@@ -3,23 +3,24 @@
   width: 100%;
   position: relative;
 
-  // just deep styling scss case with media and bem like
+  // just deep styling scss case with media
   ::ng-deep {
     .page-container {
       display: block;
-      margin: 16px auto 0;
+      margin: 16px auto;
       width: calc(100% - 64px);
       max-width: 1200px;
 
       @media screen and (max-width: 599px) {
         width: calc(100% - 12px);
-        margin: 6px 6px 0;
+        margin: 6px 6px;
       }
 
+      // just bem like case
       &--mabile-not-response-width {
         @media screen and (max-width: 599px) {
           min-width: 587px;
-          margin: 6px 6px 0;
+          margin: 6px 6px;
         }
       }
     }

@@ -12,6 +12,7 @@ const generateRandomInteger = (): number => {
 };
 
 const generateRandomFloat = (): number => {
+  // use default js randomizer, if it necessary need to create another approach
   return parseFloat(Math.random().toFixed(18));
 };
 

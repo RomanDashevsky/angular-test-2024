@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DataFetchSettingsService } from '../../services/data-fetch-settings.service';
 import { Subject, takeUntil } from 'rxjs';
@@ -18,7 +18,8 @@ export class DataSettingsComponent {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly settingsService: DataFetchSettingsService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private cdr: ChangeDetectorRef
   ) {
     this.form = this.formBuilder.group({
       reaperTime: [this.settingsService.reaperTime],
@@ -59,6 +60,7 @@ export class DataSettingsComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe((result) => {
         this.isMobile = result.matches;
+        this.cdr.markForCheck();
       });
   }
 }
